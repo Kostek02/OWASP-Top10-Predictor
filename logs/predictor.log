@@ -1,0 +1,160 @@
+2025-02-17 01:44:49,931 - root - INFO - Environment setup complete
+2025-02-17 01:44:49,931 - root - INFO - Collecting historical OWASP data...
+2025-02-17 01:44:53,364 - root - INFO - Collecting current security data...
+2025-02-17 01:44:55,247 - root - ERROR - Error fetching CVE data: 503 Server Error: Service Unavailable for url: https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=30d&pubEndDate=2025-02-17
+2025-02-17 01:44:55,254 - root - INFO - Generating historical analysis...
+2025-02-17 01:44:55,254 - root - INFO - Generating historical trends plot...
+2025-02-17 01:44:55,258 - root - ERROR - An error occurred: Index contains duplicate entries, cannot reshape
+Traceback (most recent call last):
+  File "/Users/kljr/Desktop/OWASP Top10 Predictor/main.py", line 177, in main
+    plot_historical_trends(historical_data)
+  File "/Users/kljr/Desktop/OWASP Top10 Predictor/main.py", line 74, in plot_historical_trends
+    trend_data = historical_data.pivot(index='year', columns='vulnerability', values='rank')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/pandas/util/_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/frame.py", line 8567, in pivot
+    return pivot(self, index=index, columns=columns, values=values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/pandas/util/_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/reshape/pivot.py", line 540, in pivot
+    return indexed.unstack(columns_listlike)  # type: ignore[arg-type]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/series.py", line 4455, in unstack
+    return unstack(self, level, fill_value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/reshape/reshape.py", line 489, in unstack
+    unstacker = _Unstacker(
+                ^^^^^^^^^^^
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/reshape/reshape.py", line 137, in __init__
+    self._make_selectors()
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/reshape/reshape.py", line 189, in _make_selectors
+    raise ValueError("Index contains duplicate entries, cannot reshape")
+ValueError: Index contains duplicate entries, cannot reshape
+2025-02-17 01:47:12,850 - root - INFO - Environment setup complete
+2025-02-17 01:47:12,851 - root - INFO - Collecting historical OWASP data...
+2025-02-17 01:47:15,371 - root - INFO - Collecting current security data...
+2025-02-17 01:47:32,285 - root - ERROR - Error fetching CVE data: 404 Client Error:  for url: https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=30d&pubEndDate=2025-02-17
+2025-02-17 01:47:32,290 - root - WARNING - Failed to fetch CVE data after all attempts. Proceeding with empty dataset.
+2025-02-17 01:47:32,298 - root - INFO - Generating historical analysis...
+2025-02-17 01:47:32,299 - root - INFO - Generating historical trends plot...
+2025-02-17 01:47:32,355 - root - INFO - Analyzing vulnerability persistence...
+2025-02-17 01:47:32,556 - root - INFO - Training model and generating predictions...
+2025-02-17 01:48:19,826 - root - ERROR - An error occurred: 'summary'
+Traceback (most recent call last):
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3802, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 165, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 5745, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 5753, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'summary'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/kljr/Desktop/OWASP Top10 Predictor/main.py", line 189, in main
+    predictor.train(historical_data, cve_data, github_data)
+  File "/Users/kljr/Desktop/OWASP Top10 Predictor/src/models/predictor.py", line 42, in train
+    X = self.prepare_features(pd.concat([cve_data, github_data]))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kljr/Desktop/OWASP Top10 Predictor/src/models/predictor.py", line 19, in prepare_features
+    text_features = data['description'].fillna('') + ' ' + data['summary'].fillna('')
+                                                           ~~~~^^^^^^^^^^^
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/frame.py", line 3807, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3804, in get_loc
+    raise KeyError(key) from err
+KeyError: 'summary'
+2025-02-17 01:50:40,409 - root - INFO - Environment setup complete
+2025-02-17 01:50:40,410 - root - INFO - Collecting historical OWASP data...
+2025-02-17 01:50:42,549 - root - INFO - Collecting current security data...
+2025-02-17 01:50:53,496 - root - ERROR - Error fetching CVE data: 404 Client Error:  for url: https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=30d&pubEndDate=2025-02-17
+2025-02-17 01:50:53,497 - root - WARNING - Failed to fetch CVE data after all attempts. Proceeding with empty dataset.
+2025-02-17 01:50:53,503 - root - INFO - Generating historical analysis...
+2025-02-17 01:50:53,503 - root - INFO - Generating historical trends plot...
+2025-02-17 01:50:53,560 - root - INFO - Analyzing vulnerability persistence...
+2025-02-17 01:50:53,771 - root - INFO - Training model and generating predictions...
+2025-02-17 01:51:00,283 - root - ERROR - An error occurred: This RandomForestClassifier estimator requires y to be passed, but the target y is None.
+Traceback (most recent call last):
+  File "/Users/kljr/Desktop/OWASP Top10 Predictor/main.py", line 189, in main
+    predictor.train(historical_data, cve_data, github_data)
+  File "/Users/kljr/Desktop/OWASP Top10 Predictor/src/models/predictor.py", line 71, in train
+    self.classifier.fit(X, y)
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/sklearn/ensemble/_forest.py", line 345, in fit
+    X, y = self._validate_data(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/sklearn/base.py", line 551, in _validate_data
+    raise ValueError(
+ValueError: This RandomForestClassifier estimator requires y to be passed, but the target y is None.
+2025-02-17 01:53:05,667 - root - INFO - Environment setup complete
+2025-02-17 01:53:05,668 - root - INFO - Collecting historical OWASP data...
+2025-02-17 01:53:07,773 - root - INFO - Collecting current security data...
+2025-02-17 01:53:09,701 - root - ERROR - Error fetching CVE data: 404 Client Error:  for url: https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=30d&pubEndDate=2025-02-17
+2025-02-17 01:53:09,701 - root - WARNING - Failed to fetch CVE data after all attempts. Proceeding with empty dataset.
+2025-02-17 01:53:09,707 - root - INFO - Generating historical analysis...
+2025-02-17 01:53:09,707 - root - INFO - Generating historical trends plot...
+2025-02-17 01:53:09,771 - root - INFO - Analyzing vulnerability persistence...
+2025-02-17 01:53:10,368 - root - INFO - Training model and generating predictions...
+2025-02-17 01:53:16,172 - root - ERROR - An error occurred: Found input variables with inconsistent numbers of samples: [100, 50]
+Traceback (most recent call last):
+  File "/Users/kljr/Desktop/OWASP Top10 Predictor/main.py", line 189, in main
+    predictor.train(historical_data, cve_data, github_data)
+  File "/Users/kljr/Desktop/OWASP Top10 Predictor/src/models/predictor.py", line 72, in train
+    self.classifier.fit(X, y)
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/sklearn/ensemble/_forest.py", line 345, in fit
+    X, y = self._validate_data(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/sklearn/base.py", line 584, in _validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/sklearn/utils/validation.py", line 1124, in check_X_y
+    check_consistent_length(X, y)
+  File "/Users/kljr/micromamba/envs/owasp-predictor/lib/python3.11/site-packages/sklearn/utils/validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [100, 50]
+2025-02-17 01:55:14,546 - root - INFO - Environment setup complete
+2025-02-17 01:55:14,547 - root - INFO - Collecting historical OWASP data...
+2025-02-17 01:55:16,505 - root - INFO - Collecting current security data...
+2025-02-17 01:55:18,371 - root - ERROR - Error fetching CVE data: 404 Client Error:  for url: https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=30d&pubEndDate=2025-02-17
+2025-02-17 01:55:18,372 - root - WARNING - Failed to fetch CVE data after all attempts. Proceeding with empty dataset.
+2025-02-17 01:55:18,378 - root - INFO - Generating historical analysis...
+2025-02-17 01:55:18,379 - root - INFO - Generating historical trends plot...
+2025-02-17 01:55:18,455 - root - INFO - Analyzing vulnerability persistence...
+2025-02-17 01:55:18,992 - root - INFO - Training model and generating predictions...
+2025-02-17 01:55:29,393 - root - INFO - Generating prediction report...
+2025-02-17 01:55:29,395 - root - INFO - Analysis complete! Results are available in the 'results' directory:
+2025-02-17 02:00:47,660 - root - INFO - Environment setup complete
+2025-02-17 02:00:47,662 - root - INFO - Collecting historical OWASP data...
+2025-02-17 02:00:50,083 - root - INFO - Collecting current security data...
+2025-02-17 02:01:11,818 - root - ERROR - Error fetching CVE data: 404 Client Error:  for url: https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=30d&pubEndDate=2025-02-17
+2025-02-17 02:01:11,819 - root - WARNING - Failed to fetch CVE data after all attempts. Proceeding with empty dataset.
+2025-02-17 02:01:11,837 - root - INFO - Generating historical analysis...
+2025-02-17 02:01:11,837 - root - INFO - Generating historical trends plot...
+2025-02-17 02:01:11,927 - root - INFO - Analyzing vulnerability persistence...
+2025-02-17 02:01:12,470 - root - INFO - Training model and generating predictions...
+2025-02-17 02:01:25,252 - root - ERROR - An error occurred: 0 is not in list
+Traceback (most recent call last):
+  File "/Users/kljr/Desktop/OWASP Top10 Predictor/main.py", line 190, in main
+    predictions = predictor.predict_top10(pd.concat([cve_data, github_data]))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kljr/Desktop/OWASP Top10 Predictor/src/models/predictor.py", line 104, in predict_top10
+    vuln_name = list(self.vuln_to_idx.keys())[list(self.vuln_to_idx.values()).index(idx)]
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 0 is not in list
+2025-02-17 02:04:15,256 - root - INFO - Environment setup complete
+2025-02-17 02:04:15,257 - root - INFO - Collecting historical OWASP data...
+2025-02-17 02:04:17,037 - root - INFO - Collecting current security data...
+2025-02-17 02:04:32,846 - root - ERROR - Error fetching CVE data: 404 Client Error:  for url: https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=30d&pubEndDate=2025-02-17
+2025-02-17 02:04:32,849 - root - WARNING - Failed to fetch CVE data after all attempts. Proceeding with empty dataset.
+2025-02-17 02:04:32,869 - root - INFO - Generating historical analysis...
+2025-02-17 02:04:32,869 - root - INFO - Generating historical trends plot...
+2025-02-17 02:04:33,011 - root - INFO - Analyzing vulnerability persistence...
+2025-02-17 02:04:33,262 - root - INFO - Training model and generating predictions...
+2025-02-17 02:04:44,177 - root - INFO - Generating prediction report...
+2025-02-17 02:04:44,179 - root - INFO - Analysis complete! Results are available in the 'results' directory:
