@@ -158,3 +158,535 @@ ValueError: 0 is not in list
 2025-02-17 02:04:33,262 - root - INFO - Training model and generating predictions...
 2025-02-17 02:04:44,177 - root - INFO - Generating prediction report...
 2025-02-17 02:04:44,179 - root - INFO - Analysis complete! Results are available in the 'results' directory:
+2025-02-18 14:22:08,556 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 14:22:08,557 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 14:22:08,557 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 14:22:11,144 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 14:22:12,321 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 14:22:39,275 - owasp_predictor - INFO - Training prediction model
+2025-02-18 14:22:43,672 - owasp_predictor - INFO - Generating predictions
+2025-02-18 14:22:49,379 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 14:22:49,684 - owasp_predictor - ERROR - Error during prediction process: 'ReportGenerator' object has no attribute '_create_github_trends_plot'
+Traceback (most recent call last):
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/main.py", line 216, in main
+    report_path = report_generator.generate_prediction_report(
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/utils/report_generator.py", line 82, in generate_prediction_report
+    self._generate_visualizations(
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/utils/report_generator.py", line 187, in _generate_visualizations
+    self._create_github_trends_plot(github_trends)
+AttributeError: 'ReportGenerator' object has no attribute '_create_github_trends_plot'
+2025-02-18 14:38:24,676 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 14:38:24,676 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 14:38:24,676 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 14:38:26,847 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 14:38:27,858 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 14:38:55,276 - owasp_predictor - INFO - Training prediction model
+2025-02-18 14:39:38,844 - owasp_predictor - INFO - Generating predictions
+2025-02-18 14:41:02,031 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 14:41:02,321 - owasp_predictor - ERROR - Error during prediction process: 'published_date'
+Traceback (most recent call last):
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/venv/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 3802, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas/_libs/index.pyx", line 138, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 165, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 5745, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 5753, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'published_date'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/main.py", line 216, in main
+    report_path = report_generator.generate_prediction_report(
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/utils/report_generator.py", line 83, in generate_prediction_report
+    self._generate_visualizations(
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/utils/report_generator.py", line 188, in _generate_visualizations
+    self._create_github_trends_plot(github_trends)
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/utils/report_generator.py", line 260, in _create_github_trends_plot
+    github_data['date'] = pd.to_datetime(github_data['published_date'])
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/venv/lib/python3.9/site-packages/pandas/core/frame.py", line 3807, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/venv/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 3804, in get_loc
+    raise KeyError(key) from err
+KeyError: 'published_date'
+2025-02-18 14:44:18,961 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 14:44:18,961 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 14:44:18,961 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 14:44:22,202 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 14:44:23,464 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 14:44:41,620 - owasp_predictor - INFO - Training prediction model
+2025-02-18 14:45:26,064 - owasp_predictor - INFO - Generating predictions
+2025-02-18 14:46:53,483 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 14:46:53,801 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 14:46:53,801 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 15:22:16,082 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 15:22:16,082 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 15:22:16,082 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 15:22:21,354 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 15:22:22,748 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 15:23:10,237 - owasp_predictor - INFO - Training prediction model
+2025-02-18 15:24:01,528 - owasp_predictor - INFO - Generating predictions
+2025-02-18 15:25:37,498 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 15:25:37,781 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 15:25:37,781 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 15:34:03,206 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 15:34:03,206 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 15:34:03,206 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 15:34:03,207 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 15:34:05,875 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 15:35:28,230 - owasp_predictor - INFO - Training prediction model
+2025-02-18 15:35:32,630 - owasp_predictor - INFO - Generating predictions
+2025-02-18 15:35:37,833 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 15:35:38,122 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 15:35:38,122 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 15:46:04,990 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 15:46:04,991 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 15:46:04,991 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 15:46:04,991 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 15:46:06,142 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 15:46:08,108 - owasp_predictor - INFO - Training prediction model
+2025-02-18 15:46:12,164 - owasp_predictor - INFO - Generating predictions
+2025-02-18 15:46:17,390 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 15:46:17,398 - owasp_predictor - ERROR - Error during prediction process: 
+Traceback (most recent call last):
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/main.py", line 188, in main
+    report_path = report_generator.generate_prediction_report(
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/utils/report_generator.py", line 129, in generate_prediction_report
+    - New threats like {next(p['vulnerability'] for p in predictions_2025 if p['vulnerability'] not in [p2['vulnerability'] for p2 in historical_data.iloc[-10:].to_dict('records')])} emerging in response to technological changes
+StopIteration
+2025-02-18 15:47:43,707 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 15:47:43,707 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 15:47:43,708 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 15:47:43,708 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 15:47:44,785 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 15:49:08,391 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 15:49:08,391 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 15:49:08,391 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 15:49:08,391 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 15:49:09,540 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 15:51:42,776 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 15:51:42,776 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 15:51:42,776 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 15:51:42,777 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 15:51:43,834 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 15:52:54,429 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 15:52:54,429 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 15:52:54,429 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 15:52:54,429 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 15:52:55,412 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 15:57:11,509 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 15:57:11,510 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 15:57:11,510 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 15:57:11,510 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 15:57:12,631 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 16:08:27,073 - owasp_predictor - INFO - Training prediction model
+2025-02-18 16:08:30,838 - owasp_predictor - INFO - Generating predictions
+2025-02-18 16:08:35,838 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 16:08:36,151 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 16:08:36,151 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 18:06:36,096 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 18:06:36,096 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 18:06:36,096 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 18:06:36,097 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 18:06:36,944 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 18:17:47,728 - owasp_predictor - INFO - Training prediction model
+2025-02-18 18:17:51,523 - owasp_predictor - INFO - Generating predictions
+2025-02-18 18:17:56,357 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 18:17:56,679 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 18:17:56,679 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 18:28:25,078 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 18:28:25,078 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 18:28:25,078 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 18:28:25,079 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 18:28:26,116 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 18:28:51,860 - owasp_predictor - INFO - Training prediction model
+2025-02-18 18:29:36,576 - owasp_predictor - INFO - Generating predictions
+2025-02-18 18:30:25,270 - owasp_predictor - ERROR - Error during prediction process: Input X contains NaN.
+RandomForestClassifier does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+Traceback (most recent call last):
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/main.py", line 183, in main
+    predictions_2025 = predictor.predict_top10(combined_data)
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/models/predictor.py", line 133, in predict_top10
+    base_probas = self.classifier.predict_proba(X)
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/venv/lib/python3.9/site-packages/sklearn/ensemble/_forest.py", line 862, in predict_proba
+    X = self._validate_X_predict(X)
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/venv/lib/python3.9/site-packages/sklearn/ensemble/_forest.py", line 602, in _validate_X_predict
+    X = self._validate_data(X, dtype=DTYPE, accept_sparse="csr", reset=False)
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/venv/lib/python3.9/site-packages/sklearn/base.py", line 565, in _validate_data
+    X = check_array(X, input_name="X", **check_params)
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/venv/lib/python3.9/site-packages/sklearn/utils/validation.py", line 921, in check_array
+    _assert_all_finite(
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/venv/lib/python3.9/site-packages/sklearn/utils/validation.py", line 161, in _assert_all_finite
+    raise ValueError(msg_err)
+ValueError: Input X contains NaN.
+RandomForestClassifier does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2025-02-18 18:33:18,148 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 18:33:18,149 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 18:33:18,149 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 18:33:18,151 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 18:33:18,996 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 18:44:54,077 - owasp_predictor - INFO - Training prediction model
+2025-02-18 18:44:58,513 - owasp_predictor - INFO - Generating predictions
+2025-02-18 18:45:04,932 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 18:45:05,269 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 18:45:05,269 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 18:55:03,290 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 18:55:03,291 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 18:55:03,291 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 18:55:03,293 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 18:55:04,277 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 19:18:19,554 - owasp_predictor - INFO - Training prediction model
+2025-02-18 19:18:23,464 - owasp_predictor - INFO - Generating predictions
+2025-02-18 19:18:28,264 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 19:18:28,611 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 19:18:28,611 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 19:37:55,111 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 19:37:55,114 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 19:37:55,114 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 19:37:55,115 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 19:37:56,087 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 19:44:49,186 - owasp_predictor - INFO - Training prediction model
+2025-02-18 19:44:53,660 - owasp_predictor - INFO - Generating predictions
+2025-02-18 19:44:58,818 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 19:44:59,162 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 19:44:59,162 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 20:24:44,821 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 20:24:44,822 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 20:24:44,822 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 20:24:44,824 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 20:24:45,763 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 20:32:35,061 - owasp_predictor - INFO - Training prediction model
+2025-02-18 20:32:39,258 - owasp_predictor - INFO - Generating predictions
+2025-02-18 20:32:44,338 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 20:32:44,716 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 20:32:44,716 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 20:38:21,244 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 20:38:21,245 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 20:38:21,245 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 20:38:21,245 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 20:38:22,227 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 20:38:24,798 - owasp_predictor - INFO - Training prediction model
+2025-02-18 20:38:29,728 - owasp_predictor - INFO - Generating predictions
+2025-02-18 20:38:37,222 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 20:38:37,520 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 20:38:37,520 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 20:46:42,544 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 20:46:42,545 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 20:46:42,545 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 20:46:42,547 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 20:46:43,489 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 20:48:52,777 - owasp_predictor - INFO - Training prediction model
+2025-02-18 20:48:57,022 - owasp_predictor - INFO - Generating predictions
+2025-02-18 20:49:02,879 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 20:49:03,226 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 20:49:03,226 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 20:53:22,311 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 20:53:22,312 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 20:53:22,312 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 20:53:22,313 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 20:53:24,080 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 20:55:46,726 - owasp_predictor - INFO - Training prediction model
+2025-02-18 20:55:51,059 - owasp_predictor - INFO - Generating predictions
+2025-02-18 20:55:56,697 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 20:55:56,981 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 20:55:56,981 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 21:03:15,521 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 21:03:15,521 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 21:03:15,521 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 21:03:15,523 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 21:03:16,594 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 21:06:33,078 - owasp_predictor - INFO - Training prediction model
+2025-02-18 21:06:37,113 - owasp_predictor - INFO - Generating predictions
+2025-02-18 21:06:42,480 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 21:06:42,820 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 21:06:42,820 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 21:12:24,367 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 21:12:24,367 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 21:12:24,367 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 21:12:24,370 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 21:12:25,291 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 21:13:52,927 - owasp_predictor - INFO - Training prediction model
+2025-02-18 21:13:56,675 - owasp_predictor - INFO - Generating predictions
+2025-02-18 21:14:01,284 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 21:14:01,538 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 21:14:01,539 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 21:41:36,648 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 21:41:36,648 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 21:41:36,648 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 21:41:36,650 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 21:41:38,595 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 21:42:19,166 - owasp_predictor - INFO - Training prediction model
+2025-02-18 21:42:26,179 - owasp_predictor - INFO - Generating predictions
+2025-02-18 21:42:35,526 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 21:42:35,900 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 21:42:35,900 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 22:05:49,522 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 22:05:49,523 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 22:05:49,523 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 22:05:49,525 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 22:05:50,615 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 22:06:20,982 - owasp_predictor - INFO - Training prediction model
+2025-02-18 22:06:26,742 - owasp_predictor - INFO - Generating predictions
+2025-02-18 22:06:35,240 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 22:06:35,557 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 22:06:35,557 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 22:19:22,471 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 22:19:22,471 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 22:19:22,471 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 22:19:22,473 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 22:19:23,572 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 22:20:14,710 - owasp_predictor - INFO - Training prediction model
+2025-02-18 22:20:21,045 - owasp_predictor - INFO - Generating predictions
+2025-02-18 22:20:29,532 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 22:20:29,541 - owasp_predictor - ERROR - Error during prediction process: 
+Traceback (most recent call last):
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/main.py", line 188, in main
+    report_path = report_generator.generate_prediction_report(
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/utils/report_generator.py", line 40, in generate_prediction_report
+    future_trends = self._analyze_future_trends(predictions_2025, predictions_2029)
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/utils/report_generator.py", line 433, in _analyze_future_trends
+    pred_2029 = next(p for p in predictions_2029 if p['vulnerability'] == vuln)
+StopIteration
+2025-02-18 22:28:34,498 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 22:28:34,499 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 22:28:34,499 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 22:28:34,501 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 22:28:36,244 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 22:29:54,596 - owasp_predictor - INFO - Training prediction model
+2025-02-18 22:29:58,714 - owasp_predictor - INFO - Generating predictions
+2025-02-18 22:30:03,506 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 22:30:03,834 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 22:30:03,834 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 22:34:04,351 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 22:34:04,352 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 22:34:04,352 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 22:34:04,353 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 22:34:06,206 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 22:37:12,461 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 22:37:12,461 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 22:37:12,461 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 22:37:12,463 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 22:37:13,472 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 22:41:55,420 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 22:41:55,420 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 22:41:55,420 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 22:41:55,422 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 22:41:56,488 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 22:43:34,495 - owasp_predictor - INFO - Training prediction model
+2025-02-18 22:43:38,277 - owasp_predictor - INFO - Generating predictions
+2025-02-18 22:43:43,059 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 22:43:43,385 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 22:43:43,385 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 23:23:58,484 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 23:23:58,484 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 23:23:58,484 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 23:23:58,484 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 23:23:59,662 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 23:27:30,131 - owasp_predictor - INFO - Training prediction model
+2025-02-18 23:27:39,940 - owasp_predictor - INFO - Generating predictions
+2025-02-18 23:27:54,283 - owasp_predictor - INFO - Generating prediction report
+2025-02-18 23:27:54,567 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-18 23:27:54,567 - owasp_predictor - INFO - Process completed successfully
+2025-02-18 23:35:24,917 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 23:35:24,917 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 23:35:24,917 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 23:35:24,918 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 23:35:25,884 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 23:39:43,864 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 23:39:43,864 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 23:39:43,864 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 23:39:43,865 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 23:39:45,042 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 23:48:01,185 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 23:48:01,185 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 23:48:01,185 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 23:48:01,186 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 23:48:02,508 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 23:50:49,307 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 23:50:49,307 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 23:50:49,307 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 23:50:49,310 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 23:50:50,383 - owasp_predictor - INFO - Collecting CVE data
+2025-02-18 23:57:21,183 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-18 23:57:21,183 - owasp_predictor - INFO - Initializing data collectors
+2025-02-18 23:57:21,183 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-18 23:57:21,185 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-18 23:57:21,692 - owasp_predictor - INFO - Collecting CVE data
+2025-02-19 00:04:41,158 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-19 00:04:41,159 - owasp_predictor - INFO - Initializing data collectors
+2025-02-19 00:04:41,159 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-19 00:04:41,160 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-19 00:04:42,425 - owasp_predictor - INFO - Collecting CVE data
+2025-02-19 00:07:28,571 - owasp_predictor - INFO - Training prediction model
+2025-02-19 00:07:36,831 - owasp_predictor - ERROR - Error during prediction process: Found input variables with inconsistent numbers of samples: [120, 30]
+Traceback (most recent call last):
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/main.py", line 179, in main
+    predictor.train(historical_data, cve_data, github_data)
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/models/predictor.py", line 335, in train
+    self.classifier.fit(X, y)
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/sklearn/ensemble/_forest.py", line 345, in fit
+    X, y = self._validate_data(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/sklearn/base.py", line 584, in _validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/sklearn/utils/validation.py", line 1124, in check_X_y
+    check_consistent_length(X, y)
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/sklearn/utils/validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [120, 30]
+2025-02-19 00:12:10,758 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-19 00:12:10,758 - owasp_predictor - INFO - Initializing data collectors
+2025-02-19 00:12:10,758 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-19 00:12:10,759 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-19 00:12:11,957 - owasp_predictor - INFO - Collecting CVE data
+2025-02-19 00:15:06,500 - owasp_predictor - INFO - Training prediction model
+2025-02-19 00:15:15,489 - owasp_predictor - ERROR - Error during prediction process: 'VulnerabilityPredictor' object has no attribute '_log_feature_importance'
+Traceback (most recent call last):
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/main.py", line 179, in main
+    predictor.train(historical_data, cve_data, github_data)
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/models/predictor.py", line 346, in train
+    self._log_feature_importance()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'VulnerabilityPredictor' object has no attribute '_log_feature_importance'
+2025-02-19 00:21:25,235 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-19 00:21:25,235 - owasp_predictor - INFO - Initializing data collectors
+2025-02-19 00:21:25,235 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-19 00:21:25,236 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-19 00:21:28,410 - owasp_predictor - INFO - Collecting CVE data
+2025-02-19 00:27:00,799 - owasp_predictor - INFO - Training prediction model
+2025-02-19 00:27:12,850 - owasp_predictor - INFO - Generating predictions
+2025-02-19 00:27:25,135 - owasp_predictor - ERROR - Error during prediction process: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/main.py", line 183, in main
+    predictions_2025 = predictor.predict_top10(combined_data)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/models/predictor.py", line 369, in predict_top10
+    trend_adjusted_probas = self._apply_trend_adjustments(mean_probas, trend_weight)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/models/predictor.py", line 517, in _apply_trend_adjustments
+    trend_weight = self.trend_weights.get(vuln, 0.0)
+                   ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2025-02-19 00:31:16,045 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-19 00:31:16,045 - owasp_predictor - INFO - Initializing data collectors
+2025-02-19 00:31:16,046 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-19 00:31:16,046 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-19 00:31:17,141 - owasp_predictor - INFO - Collecting CVE data
+2025-02-19 00:34:05,675 - owasp_predictor - INFO - Training prediction model
+2025-02-19 00:34:16,208 - owasp_predictor - INFO - Generating predictions
+2025-02-19 00:34:35,767 - owasp_predictor - INFO - Generating prediction report
+2025-02-19 00:34:36,097 - owasp_predictor - ERROR - Error during prediction process: can't compare offset-naive and offset-aware datetimes
+Traceback (most recent call last):
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/algorithms.py", line 1870, in safe_sort
+    sorter = values.argsort()
+             ^^^^^^^^^^^^^^^^
+TypeError: can't compare offset-naive and offset-aware datetimes
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/main.py", line 188, in main
+    report_path = report_generator.generate_prediction_report(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/utils/report_generator.py", line 152, in generate_prediction_report
+    self._generate_visualizations(
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/utils/report_generator.py", line 521, in _generate_visualizations
+    self._create_cve_trends_plot(cve_trends)
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/utils/report_generator.py", line 562, in _create_cve_trends_plot
+    daily_severity = cve_data.groupby('date')['severity'].agg(['mean', 'count']).reset_index()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/groupby/generic.py", line 281, in aggregate
+    ret = self._aggregate_multiple_funcs(func)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/groupby/generic.py", line 336, in _aggregate_multiple_funcs
+    results[key] = self.aggregate(func)
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/groupby/generic.py", line 275, in aggregate
+    return getattr(self, func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/groupby/groupby.py", line 2183, in mean
+    result = self._cython_agg_general(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/groupby/groupby.py", line 1810, in _cython_agg_general
+    new_mgr = data.grouped_reduce(array_func, ignore_failures=ignore_failures)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/internals/base.py", line 199, in grouped_reduce
+    res = func(arr)
+          ^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/groupby/groupby.py", line 1791, in array_func
+    result = self.grouper._cython_operation(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/groupby/ops.py", line 1035, in _cython_operation
+    cy_op = WrappedCythonOp(kind=kind, how=how, has_dropped_na=self.has_dropped_na)
+                                                               ^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/properties.pyx", line 36, in pandas._libs.properties.CachedProperty.__get__
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/groupby/ops.py", line 942, in has_dropped_na
+    return bool((self.group_info[0] < 0).any())
+                 ^^^^^^^^^^^^^^^
+  File "pandas/_libs/properties.pyx", line 36, in pandas._libs.properties.CachedProperty.__get__
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/groupby/ops.py", line 946, in group_info
+    comp_ids, obs_group_ids = self._get_compressed_codes()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/groupby/ops.py", line 977, in _get_compressed_codes
+    return ping.codes, np.arange(len(ping.group_index), dtype=np.intp)
+           ^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/groupby/grouper.py", line 621, in codes
+    return self._codes_and_uniques[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/properties.pyx", line 36, in pandas._libs.properties.CachedProperty.__get__
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/groupby/grouper.py", line 692, in _codes_and_uniques
+    codes, uniques = algorithms.factorize(  # type: ignore[assignment]
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/algorithms.py", line 832, in factorize
+    uniques, codes = safe_sort(
+                     ^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/algorithms.py", line 1883, in safe_sort
+    ordered = _sort_mixed(values)
+              ^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/algorithms.py", line 1936, in _sort_mixed
+    nums = np.sort(values[~str_pos & ~none_pos])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<__array_function__ internals>", line 200, in sort
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/numpy/core/fromnumeric.py", line 1030, in sort
+    a.sort(axis=axis, kind=kind, order=order)
+TypeError: can't compare offset-naive and offset-aware datetimes
+2025-02-19 00:39:37,398 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-19 00:39:37,398 - owasp_predictor - INFO - Initializing data collectors
+2025-02-19 00:39:37,399 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-19 00:39:37,401 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-19 00:39:38,758 - owasp_predictor - INFO - Collecting CVE data
+2025-02-19 00:44:21,152 - owasp_predictor - INFO - Training prediction model
+2025-02-19 00:44:33,809 - owasp_predictor - INFO - Generating predictions
+2025-02-19 00:44:54,698 - owasp_predictor - INFO - Generating prediction report
+2025-02-19 00:44:56,752 - owasp_predictor - ERROR - Error during prediction process: Can only use .dt accessor with datetimelike values
+Traceback (most recent call last):
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/main.py", line 188, in main
+    report_path = report_generator.generate_prediction_report(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/utils/report_generator.py", line 152, in generate_prediction_report
+    self._generate_visualizations(
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/utils/report_generator.py", line 521, in _generate_visualizations
+    self._create_cve_trends_plot(cve_trends)
+  File "/Users/kl/Desktop/OWASP-Top10-Predictor/src/utils/report_generator.py", line 561, in _create_cve_trends_plot
+    cve_data['date'] = pd.to_datetime(cve_data['published_date']).dt.tz_localize(None)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/generic.py", line 5902, in __getattr__
+    return object.__getattribute__(self, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/accessor.py", line 182, in __get__
+    accessor_obj = self._accessor(obj)
+                   ^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/owasp-predictor/lib/python3.11/site-packages/pandas/core/indexes/accessors.py", line 512, in __new__
+    raise AttributeError("Can only use .dt accessor with datetimelike values")
+AttributeError: Can only use .dt accessor with datetimelike values
+2025-02-19 00:51:45,258 - owasp_predictor - INFO - Starting OWASP Top 10 prediction process
+2025-02-19 00:51:45,259 - owasp_predictor - INFO - Initializing data collectors
+2025-02-19 00:51:45,259 - owasp_predictor - INFO - Collecting historical OWASP data
+2025-02-19 00:51:45,259 - owasp_predictor - INFO - Collecting GitHub security advisories
+2025-02-19 00:51:48,578 - owasp_predictor - INFO - Collecting CVE data
+2025-02-19 00:55:51,874 - owasp_predictor - INFO - Training prediction model
+2025-02-19 00:56:04,360 - owasp_predictor - INFO - Generating predictions
+2025-02-19 00:56:23,432 - owasp_predictor - INFO - Generating prediction report
+2025-02-19 00:56:23,809 - owasp_predictor - INFO - Report generated successfully at: results/prediction_report.md
+2025-02-19 00:56:23,809 - owasp_predictor - INFO - Process completed successfully

@@ -1,1 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
 .env
+
+# Conda Environment
+.conda/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs and Cache
+logs/*.log
+data/*.json
+*.cache
+
+# Temporary Visualizations
+results/visualizations/*.html
+
+# Keep Important Reports
+!results/prediction_report.md
+!results/README.md
+
+# OS specific
+.DS_Store
+Thumbs.db
+*.bak
+
+# Model files
+models/*.pkl
+models/*.bin
+models/*.h5
+
+# Test coverage
+.coverage
+htmlcov/
+coverage.xml
+
+# API keys and secrets
+.env*
+!.env.example
+
+# Jupyter
+.ipynb_checkpoints
+*.ipynb
+
+src/__pycache__
+src/models/__pycache__
+src/data/__pycache__
+src/utils/__pycache__
+src/visualizations/__pycache__
+src/tests/__pycache__

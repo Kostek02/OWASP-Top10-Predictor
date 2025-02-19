@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import sys
 import logging
@@ -10,10 +11,10 @@ from dotenv import load_dotenv
 
 from src.data.collectors import OWASPHistoricalCollector, GitHubSecurityCollector, CVECollector
 from src.models.predictor import VulnerabilityPredictor
+from src.utils.report_generator import ReportGenerator
 
 def setup_environment():
     """Setup environment variables and required directories"""
-    # Load environment variables
     env_file = Path('.env')
     if not env_file.exists():
         if Path('.env.example').exists():
@@ -24,16 +25,7 @@ def setup_environment():
     
     load_dotenv()
     
-    # Create required directories
-    directories = [
-        'results',
-        'data',
-        'models',
-        'logs',
-        os.path.dirname(os.getenv('MODEL_SAVE_PATH', 'models/owasp_predictor.pkl')),
-        os.path.dirname(os.getenv('VECTORIZER_SAVE_PATH', 'models/tfidf_vectorizer.pkl')),
-    ]
-    
+    directories = ['results', 'data', 'models', 'logs']
     for directory in directories:
         os.makedirs(directory, exist_ok=True)
 
@@ -42,29 +34,31 @@ def setup_logging():
     log_file = os.getenv('LOG_FILE', 'logs/predictor.log')
     log_level = getattr(logging, os.getenv('LOG_LEVEL', 'INFO').upper())
     
-    logging.basicConfig(
-        level=log_level,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.FileHandler(log_file),
-            logging.StreamHandler()
-        ]
-    )
+    logger = logging.getLogger('owasp_predictor')
+    logger.setLevel(log_level)
     
-    # Suppress unnecessary warnings
+    logger.handlers = []
+    
+    file_handler = logging.FileHandler(log_file)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
+    
     logging.getLogger('urllib3').setLevel(logging.WARNING)
     logging.getLogger('matplotlib').setLevel(logging.WARNING)
+    
+    return logger
 
-def check_api_keys():
+def check_api_keys(logger):
     """Check if required API keys are configured"""
     github_token = os.getenv('GITHUB_TOKEN')
     if not github_token:
-        logging.error("GitHub token not found in environment variables. Please set GITHUB_TOKEN in your .env file.")
+        logger.error("GitHub token not found in environment variables. Please set GITHUB_TOKEN in your .env file.")
         sys.exit(1)
     
     nvd_api_key = os.getenv('NVD_API_KEY')
     if not nvd_api_key:
-        logging.warning("NVD API key not found. Will use unauthenticated requests (rate limited).")
+        logger.warning("NVD API key not found. Will use unauthenticated requests (rate limited).")
 
 def plot_historical_trends(historical_data: pd.DataFrame):
     """Generate plot of vulnerability trends over time"""
@@ -160,49 +154,53 @@ def generate_prediction_report(predictions: list, historical_data: pd.DataFrame)
 
 def main():
     try:
-        print("Starting OWASP Top 10 2025 prediction analysis...")
-        
-        # Setup environment and logging
         setup_environment()
-        setup_logging()
-        check_api_keys()
+        logger = setup_logging()
+        logger.info("Starting OWASP Top 10 prediction process")
         
-        logging.info("Environment setup complete")
+        check_api_keys(logger)
         
-        # Collect data
-        logging.info("Collecting historical OWASP data...")
+        logger.info("Initializing data collectors")
         historical_collector = OWASPHistoricalCollector()
-        historical_data = historical_collector.collect()
-        
-        logging.info("Collecting current security data...")
         github_collector = GitHubSecurityCollector()
         cve_collector = CVECollector()
         
+        logger.info("Collecting historical OWASP data")
+        historical_data = historical_collector.collect()
+        
+        logger.info("Collecting GitHub security advisories")
         github_data = github_collector.collect()
+        
+        logger.info("Collecting CVE data")
         cve_data = cve_collector.collect()
         
-        # Generate historical analysis
-        logging.info("Generating historical analysis...")
-        plot_historical_trends(historical_data)
-        analyze_vulnerability_persistence(historical_data)
-        
-        # Train model and generate predictions
-        logging.info("Training model and generating predictions...")
+        logger.info("Training prediction model")
         predictor = VulnerabilityPredictor()
         predictor.train(historical_data, cve_data, github_data)
-        predictions = predictor.predict_top10(pd.concat([cve_data, github_data]))
         
-        # Generate prediction report
-        generate_prediction_report(predictions, historical_data)
+        logger.info("Generating predictions")
+        combined_data = pd.concat([cve_data, github_data])
+        predictions_2025 = predictor.predict_top10(combined_data)
+        predictions_2029 = predictor.predict_top10(combined_data)
         
-        logging.info("Analysis complete! Results are available in the 'results' directory:")
-        print("\nResults available in:")
-        print("- results/historical_trends.html")
-        print("- results/vulnerability_persistence.html")
-        print("- results/prediction_report.md")
+        logger.info("Generating prediction report")
+        report_generator = ReportGenerator()
+        report_path = report_generator.generate_prediction_report(
+            predictions_2025=predictions_2025,
+            predictions_2029=predictions_2029,
+            historical_data=historical_data,
+            cve_trends=cve_data,
+            github_trends=github_data
+        )
+        
+        logger.info(f"Report generated successfully at: {report_path}")
+        logger.info("Process completed successfully")
         
     except Exception as e:
-        logging.error(f"An error occurred: {str(e)}", exc_info=True)
+        if 'logger' in locals():
+            logger.error(f"Error during prediction process: {str(e)}", exc_info=True)
+        else:
+            print(f"Error during setup: {str(e)}")
         sys.exit(1)
 
 if __name__ == "__main__":
